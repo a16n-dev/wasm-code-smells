@@ -1,15 +1,8 @@
 import { Command } from 'commander';
 import { exit } from 'process';
 import { initDb } from './db';
-import { createQueries } from './lib/createQueries';
-import { getLanguages } from './lib/getLanguages';
-import { runQuery } from './lib/runQuery';
-import { getDataset } from './lib/getDataset';
-import { sumQueries } from './lib/sumQueries';
-import { updateInfo } from './lib/updateInfo';
+import { processDataset } from './lib/process/processDataset';
 import { Opts } from './util/cli';
-import { getRepoText } from './lib/getRepoText';
-import { processRepository } from './lib/process/processRepository';
 
 const main = async (program: Command) => {
   const opts = program.opts<Opts>();
@@ -27,12 +20,7 @@ const main = async (program: Command) => {
   //   }
   // }
 
-  while (true) {
-    const success = await processRepository();
-    if (!success) {
-      break;
-    }
-  }
+  await processDataset();
 
   exit();
 };

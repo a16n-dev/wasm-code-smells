@@ -1,4 +1,4 @@
-import * as colors from 'colors/safe';
+import colors from 'colors/safe';
 import { getRepoInformation } from './getRepoInformation';
 import { getRepoLanguages } from './getRepoLanguages';
 import { getRepoReadme } from './getRepoReadme';
@@ -9,7 +9,9 @@ import { getUnprocessedRepo } from './helperFns';
  * This fetches the languages, readme, and other information
  * If the repository is not found, it will be marked as excluded
  */
-export const processRepository = async () => {
+export const processRepository = async (
+  setRateLimit: (remaining: any, total: any) => void,
+) => {
   // Find an unprocessed repo
 
   const repo = await getUnprocessedRepo();
@@ -21,7 +23,7 @@ export const processRepository = async () => {
 
     repo.processed = true;
 
-    const info = await getRepoInformation(repo._id);
+    const info = await getRepoInformation(repo._id, setRateLimit);
 
     if (!info) {
       // Assume that repository no longer exists
@@ -33,9 +35,9 @@ export const processRepository = async () => {
 
       repo.exclude = true;
     } else {
-      const readme = await getRepoReadme(repo._id);
+      const readme = await getRepoReadme(repo._id, setRateLimit);
 
-      const languages = await getRepoLanguages(repo._id);
+      const languages = await getRepoLanguages(repo._id, setRateLimit);
 
       // Save info
       repo.name = info.name;

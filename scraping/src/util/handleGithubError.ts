@@ -1,4 +1,4 @@
-import * as colors from 'colors/safe';
+import colors from 'colors/safe';
 import { format } from 'date-fns';
 
 export const handleGithubError = (error: any) => {

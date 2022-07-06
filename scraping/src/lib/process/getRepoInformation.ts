@@ -1,4 +1,4 @@
-import * as colors from 'colors/safe';
+import colors from 'colors/safe';
 import { handleGithubError } from '../../util/handleGithubError';
 import { octokit } from '../octokit';
 import { getOwnerAndName } from './helperFns';
@@ -20,16 +20,24 @@ export interface RepoInfo {
 /**
  * Retrieves information about a repository such as name, stars, forks and topics
  */
-export const getRepoInformation = async (id: string) => {
+export const getRepoInformation = async (
+  id: string,
+  setRateLimit: (remaining: any, total: any) => void,
+) => {
   console.log(colors.blue(`[run] Getting info for ${id}...`));
 
   const [owner, name] = getOwnerAndName(id);
 
   try {
-    const { data } = await octokit.request('GET /repos/:owner/:repo', {
+    const { data, headers } = await octokit.request('GET /repos/:owner/:repo', {
       owner: owner,
       repo: name,
     });
+
+    setRateLimit(
+      headers['x-ratelimit-remaining'],
+      headers['x-ratelimit-limit'],
+    );
 
     const info: RepoInfo = {
       name: data.name,
