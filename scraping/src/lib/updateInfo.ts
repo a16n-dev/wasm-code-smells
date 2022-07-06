@@ -5,7 +5,7 @@ import { octokit } from './octokit';
 export const updateInfo = async (): Promise<Boolean> => {
   // find repo where stars is undefined
   const repo = await Repository.findOne({
-    stars: { $exists: false },
+    description: { $exists: false },
     // exclude should be false or undefined
     exclude: { $in: [false, undefined] },
   });
@@ -27,6 +27,7 @@ export const updateInfo = async (): Promise<Boolean> => {
           githubId: d.id,
           name: d.name,
           url: d.html_url,
+          description: d.description,
           user: !d.owner
             ? undefined
             : {
@@ -48,6 +49,11 @@ export const updateInfo = async (): Promise<Boolean> => {
       );
     } catch (error) {
       console.log(error);
+      if (error.response.status === 404) {
+        console.log(`[error] excluding ${repo._id}`);
+        repo.exclude = true;
+        await repo.save();
+      }
       await wait(15);
     }
     return true;

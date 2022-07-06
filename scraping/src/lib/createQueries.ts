@@ -3,6 +3,10 @@ import { wait } from '../util/wait';
 import { octokit } from './octokit';
 import { codeQueries, repositoryQueries } from './queries';
 
+/**
+ * Creates all of the queries in a "queries" collection in the database.
+ * The number of results for each query is also fetched from the API
+ */
 export const createQueries = async () => {
   console.log('Creating queries in db...');
   for (const q of repositoryQueries) {

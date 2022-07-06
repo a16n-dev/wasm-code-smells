@@ -20,6 +20,7 @@ const RepositorySchema = new Schema({
   openIssues: Number,
   topics: [String],
   queries: { type: [String], default: [] },
+  processed: { type: Boolean, default: false },
   languages: {
     type: [
       {
@@ -29,6 +30,8 @@ const RepositorySchema = new Schema({
     ],
   },
   exclude: { type: Boolean, default: false },
+  description: { type: String },
+  readme: { type: String },
 });
 
 export const Repository = model('Repository', RepositorySchema);

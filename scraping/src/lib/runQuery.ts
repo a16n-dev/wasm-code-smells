@@ -43,22 +43,7 @@ export const runQuery = async () => {
             {
               _id: d.full_name,
               githubId: d.id,
-              name: d.name,
               url: d.html_url,
-              user: !d.owner
-                ? undefined
-                : {
-                    id: d.owner.id,
-                    name: d.owner.login,
-                  },
-              createdAt: d.created_at,
-              modifiedAt: d.updated_at,
-              stars: d.stargazers_count,
-              watchers: d.watchers_count,
-              size: d.size,
-              forks: d.forks_count,
-              openIssues: d.open_issues_count,
-              topics: d.topics || [],
               $addToSet: { queries: query.key },
             },
             {
@@ -93,22 +78,8 @@ export const runQuery = async () => {
             {
               _id: d.full_name,
               githubId: d.id,
-              name: d.name,
               url: d.html_url,
-              user: !d.owner
-                ? undefined
-                : {
-                    id: d.owner.id,
-                    name: d.owner.login,
-                  },
-              createdAt: d.created_at,
-              modifiedAt: d.updated_at,
-              stars: d.stargazers_count,
-              watchers: d.watchers_count,
-              size: d.size,
-              forks: d.forks_count,
-              openIssues: d.open_issues_count,
-              topics: d.topics || [],
+
               $addToSet: { queries: query.key },
             },
             {
