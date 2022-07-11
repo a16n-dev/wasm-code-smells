@@ -3,6 +3,7 @@ import { Repository } from '../../db/repository';
 import { processRepository } from './processRepository';
 import { performance } from 'perf_hooks';
 import format from 'format-duration';
+import { waitUntilTime } from '../../util/waitUntilTime';
 export const processDataset = async () => {
   const totalToProcess = await Repository.find({
     processed: { $in: [false, undefined] },
@@ -21,31 +22,38 @@ export const processDataset = async () => {
   };
 
   while (true) {
-    const estTimeRemaining =
-      (totalMsTaken / processed) * (totalToProcess.length - processed);
-    console.clear();
-    console.log(
-      colors.cyan(
-        `${totalToProcess.length - processed} remaining (${(
-          (processed / (processed + totalToProcess.length)) *
-          100
-        ).toFixed(0)}% complete) ${format(
-          estTimeRemaining,
-        )} remaining\nRate limit: ${rateTotal - rateUsed}/${rateTotal} used`,
-      ),
-    );
+    try {
+      const estTimeRemaining =
+        (totalMsTaken / processed) * (totalToProcess.length - processed);
+      console.clear();
+      console.log(
+        colors.cyan(
+          `${totalToProcess.length - processed} remaining (${(
+            (processed / (processed + totalToProcess.length)) *
+            100
+          ).toFixed(0)}% complete) ${format(
+            estTimeRemaining,
+          )} remaining\nRate limit: ${rateTotal - rateUsed}/${rateTotal} used`,
+        ),
+      );
 
-    var startTime = performance.now();
+      var startTime = performance.now();
 
-    const success = await processRepository(setRateLimit);
+      const success = await processRepository(setRateLimit);
 
-    var endTime = performance.now();
+      var endTime = performance.now();
 
-    totalMsTaken += endTime - startTime;
-    if (!success) {
-      break;
-    } else {
-      processed++;
+      totalMsTaken += endTime - startTime;
+
+      if (!success) {
+        break;
+      } else {
+        processed++;
+      }
+    } catch (error) {
+      if (error.message.startsWith('API rate limit exceeded')) {
+        await waitUntilTime(error.response.headers['x-ratelimit-reset']);
+      }
     }
   }
 };

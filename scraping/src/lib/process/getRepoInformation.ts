@@ -1,10 +1,12 @@
 import colors from 'colors/safe';
 import { handleGithubError } from '../../util/handleGithubError';
+import { wait } from '../../util/wait';
 import { octokit } from '../octokit';
 import { getOwnerAndName } from './helperFns';
 
 export interface RepoInfo {
   name: string;
+  description: string;
   userName: string;
   userId: number;
   createdAt: Date;
@@ -41,6 +43,7 @@ export const getRepoInformation = async (
 
     const info: RepoInfo = {
       name: data.name,
+      description: data.description,
       userName: data.owner.login,
       userId: data.owner.id,
       createdAt: data.created_at,

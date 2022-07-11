@@ -41,6 +41,7 @@ export const processRepository = async (
 
       // Save info
       repo.name = info.name;
+      repo.description = info.description;
       repo.user = {
         name: info.userName,
         id: info.userId,

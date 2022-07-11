@@ -2,6 +2,8 @@ import { Command } from 'commander';
 import { exit } from 'process';
 import { initDb } from './db';
 import { processDataset } from './lib/process/processDataset';
+import { readmeToPlaintext } from './lib/processText/readmeToPlaintext';
+import { writeReadmes } from './lib/processText/writeReadmes';
 import { Opts } from './util/cli';
 
 const main = async (program: Command) => {
@@ -20,7 +22,11 @@ const main = async (program: Command) => {
   //   }
   // }
 
-  await processDataset();
+  readmeToPlaintext('# Hello!\nThis is *some* text');
+
+  // await writeReadmes();
+
+  // await processDataset();
 
   exit();
 };
