@@ -23,14 +23,18 @@
   "dependencies": {
     "@textlint/markdown-to-ast": "^12.2.1",
     "@types/colors": "^1.2.1",
+    "@types/html-to-text": "^8.1.0",
+    "@types/markdown-it": "^12.2.3",
     "axios": "^0.27.2",
     "colors": "^1.4.0",
     "commander": "^9.2.0",
     "date-fns": "^2.28.0",
     "envalid": "^7.3.1",
     "format-duration": "^2.0.0",
+    "html-to-text": "^8.2.0",
     "jszip": "^3.10.0",
     "lodash": "^4.17.21",
+    "markdown-it": "^13.0.1",
     "markdown-to-txt": "^2.0.1",
     "mongoose": "^6.4.1",
     "octokit": "^1.7.1"

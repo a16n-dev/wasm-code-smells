@@ -3,6 +3,8 @@ import { Repository } from '../../db/repository';
 import markdownToTxt from 'markdown-to-txt';
 import colors from 'colors/safe';
 import JSZip from 'jszip';
+import { readmeToPlaintext } from './readmeToPlaintext';
+import { RepositoryText } from '../../db/RepositoryText';
 export const writeReadmes = async () => {
   const repositories = await Repository.find({
     exclude: { $in: [false, undefined] },
@@ -15,7 +17,18 @@ export const writeReadmes = async () => {
     // if readme or description
     if (repository.readme) {
       console.log(colors.blue(`[write] Writing readme for ${repository._id}`));
-      zip.file(`readme/${fileName}.txt`, markdownToTxt(repository.readme));
+      zip.file(`readme/${fileName}.txt`, readmeToPlaintext(repository.readme));
+      await RepositoryText.updateOne(
+        {
+          _id: repository._id,
+        },
+        {
+          _id: repository._id,
+          original: repository.readme,
+          plaintext: readmeToPlaintext(repository.readme),
+        },
+        { upsert: true },
+      );
     }
     if (repository.description) {
       console.log(

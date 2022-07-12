@@ -22,9 +22,7 @@ const main = async (program: Command) => {
   //   }
   // }
 
-  readmeToPlaintext('# Hello!\nThis is *some* text');
-
-  // await writeReadmes();
+  await writeReadmes();
 
   // await processDataset();
 
