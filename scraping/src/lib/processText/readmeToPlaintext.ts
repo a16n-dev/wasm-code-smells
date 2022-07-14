@@ -5,6 +5,11 @@ const md = new MarkdownIt({
   html: true,
 });
 
+/**
+ * Converts a README written in markdown to plaintext. The plaintext representation is intended to
+ * be used for NLP analysis and therefore omits non-text content such as images, code blocks and
+ * special characters such as emojis.
+ */
 export const readmeToPlaintext = (readme: string) => {
   // Convert Markdown to HTML
   const HTML = md.render(readme);

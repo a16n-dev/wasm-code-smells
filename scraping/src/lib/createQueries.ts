@@ -25,6 +25,7 @@ export const createQueries = async () => {
         description: q.name,
         query: q.query,
         totalResults: data.total_count,
+        sort: q.sort,
         type: 'repository',
       });
 

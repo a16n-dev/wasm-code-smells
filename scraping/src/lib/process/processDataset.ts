@@ -1,9 +1,13 @@
-import colors from 'colors/safe';
-import { Repository } from '../../db/repository';
-import { processRepository } from './processRepository';
-import { performance } from 'perf_hooks';
+import chalk from 'chalk';
 import format from 'format-duration';
+import { performance } from 'perf_hooks';
+import { Repository } from '../../db/repository';
 import { waitUntilTime } from '../../util/waitUntilTime';
+import { processRepository } from './processRepository';
+
+/**
+ * Processes repositories in the dataset, by fetching relevant information such as stars, languages and the project readme
+ */
 export const processDataset = async () => {
   const totalToProcess = await Repository.find({
     processed: { $in: [false, undefined] },
@@ -23,11 +27,12 @@ export const processDataset = async () => {
 
   while (true) {
     try {
+      // Update the console output
       const estTimeRemaining =
         (totalMsTaken / processed) * (totalToProcess.length - processed);
       console.clear();
       console.log(
-        colors.cyan(
+        chalk.cyan(
           `${totalToProcess.length - processed} remaining (${(
             (processed / (processed + totalToProcess.length)) *
             100
@@ -37,12 +42,10 @@ export const processDataset = async () => {
         ),
       );
 
+      // Process the repository
       var startTime = performance.now();
-
       const success = await processRepository(setRateLimit);
-
       var endTime = performance.now();
-
       totalMsTaken += endTime - startTime;
 
       if (!success) {

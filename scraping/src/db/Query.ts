@@ -4,6 +4,7 @@ const QuerySchema = new Schema({
   key: { type: String, required: true, index: { unique: true } },
   description: { type: String, required: true },
   query: { type: String, required: true },
+  sort: { type: String, required: false },
   totalResults: Number,
   cursor: { type: Number, default: 0, required: true },
   finished: { type: Boolean, default: false },

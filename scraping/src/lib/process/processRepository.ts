@@ -1,4 +1,4 @@
-import colors from 'colors/safe';
+import chalk from 'chalk';
 import { getRepoInformation } from './getRepoInformation';
 import { getRepoLanguages } from './getRepoLanguages';
 import { getRepoReadme } from './getRepoReadme';
@@ -18,7 +18,7 @@ export const processRepository = async (
 
   if (repo) {
     console.log(
-      colors.magenta(`\n[start] ===== Processing ${repo._id} =====\n`),
+      chalk.magenta(`\n[start] ===== Processing ${repo._id} =====\n`),
     );
 
     repo.processed = true;
@@ -28,7 +28,7 @@ export const processRepository = async (
     if (!info) {
       // Assume that repository no longer exists
       console.log(
-        colors.red(
+        chalk.red(
           `[run] Excluding ${repo._id} (likely deleted or made private)`,
         ),
       );
@@ -60,10 +60,10 @@ export const processRepository = async (
       repo.readme = readme;
     }
     await repo.save();
-    console.log(colors.green(`[end] Successfully processed ${repo._id}`));
+    console.log(chalk.green(`[end] Successfully processed ${repo._id}`));
     return true;
   } else {
-    console.log(colors.green(`[complete] No unprocessed repos`));
+    console.log(chalk.green(`[complete] No unprocessed repos`));
     return false;
   }
 };

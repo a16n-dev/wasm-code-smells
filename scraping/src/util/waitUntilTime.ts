@@ -1,4 +1,4 @@
-import colors from 'colors/safe';
+import chalk from 'chalk';
 import { format } from 'date-fns';
 import formatDuration from 'format-duration';
 import { wait } from './wait';
@@ -14,7 +14,7 @@ export const waitUntilTime = async (
 
     console.clear();
     console.log(
-      colors.cyan(
+      chalk.cyan(
         `Rate limit reset at ${format(
           resetDate,
           'HH:mm:ss',

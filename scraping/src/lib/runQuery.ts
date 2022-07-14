@@ -30,7 +30,7 @@ export const runQuery = async () => {
           q: query.query,
           per_page: 100,
           page,
-          sort: 'stars',
+          sort: (query.sort as any) || 'stars',
           order: 'desc',
         });
 

@@ -1,4 +1,4 @@
-import colors from 'colors/safe';
+import chalk from 'chalk';
 import { handleGithubError } from '../../util/handleGithubError';
 import { octokit } from '../octokit';
 import { getOwnerAndName } from './helperFns';
@@ -7,7 +7,7 @@ export const getRepoReadme = async (
   id: string,
   setRateLimit: (remaining: any, total: any) => void,
 ) => {
-  console.log(colors.blue(`[run] Getting readme for ${id}...`));
+  console.log(chalk.blue(`[run] Getting readme for ${id}...`));
 
   const [owner, name] = getOwnerAndName(id);
   try {
@@ -26,7 +26,7 @@ export const getRepoReadme = async (
 
     const readme = Buffer.from(data.content, 'base64').toString();
 
-    console.log(colors.green(`[run] Successfully got readme`));
+    console.log(chalk.green(`[run] Successfully got readme`));
 
     return readme;
   } catch (error) {

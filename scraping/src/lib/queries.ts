@@ -1,4 +1,35 @@
-export const repositoryQueries = [
+export const repositoryQueries: {
+  key: string;
+  name: string;
+  query: string;
+  sort?: string;
+}[] = [
+  // Baseline dataset for popular c projects
+  {
+    key: 'BASELINE_C_POPULAR',
+    name: 'Most popular c projects',
+    query: 'language:c',
+    sort: 'stars',
+  },
+  {
+    key: 'BASELINE_C_RECENT',
+    name: 'Most recently updated c projects',
+    query: 'language:cpp',
+    sort: 'updated',
+  },
+  {
+    key: 'BASELINE_CPP_POPULAR',
+    name: 'Most popular cpp projects',
+    query: 'language:c',
+    sort: 'stars',
+  },
+  {
+    key: 'BASELINE_CPP_RECENT',
+    name: 'Most recently updated cpp projects',
+    query: 'language:cpp',
+    sort: 'updated',
+  },
+  // Keyword queries
   {
     key: 'wasm-in-readme-c',
     name: 'C Projects that mention WASM in readme',

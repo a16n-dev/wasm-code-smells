@@ -1,4 +1,4 @@
-import colors from 'colors/safe';
+import chalk from 'chalk';
 import { handleGithubError } from '../../util/handleGithubError';
 import { octokit } from '../octokit';
 import { getOwnerAndName } from './helperFns';
@@ -7,7 +7,7 @@ export const getRepoLanguages = async (
   id: string,
   setRateLimit: (remaining: any, total: any) => void,
 ) => {
-  console.log(colors.blue(`[run] Getting languages for ${id}...`));
+  console.log(chalk.blue(`[run] Getting languages for ${id}...`));
 
   const [owner, name] = getOwnerAndName(id);
 
@@ -27,11 +27,11 @@ export const getRepoLanguages = async (
 
     if (JSON.stringify(data) === '{}') {
       console.log(
-        colors.yellow(`[run] No languages found for ${owner}/${name}`),
+        chalk.yellow(`[run] No languages found for ${owner}/${name}`),
       );
       return undefined;
     } else {
-      console.log(colors.green(`[run] Successfully got languages`));
+      console.log(chalk.green(`[run] Successfully got languages`));
       return Object.entries(data).map(([key, value]) => ({
         name: key,
         size: value as number,

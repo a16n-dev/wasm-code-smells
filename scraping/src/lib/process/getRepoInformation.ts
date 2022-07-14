@@ -1,6 +1,5 @@
-import colors from 'colors/safe';
+import chalk from 'chalk';
 import { handleGithubError } from '../../util/handleGithubError';
-import { wait } from '../../util/wait';
 import { octokit } from '../octokit';
 import { getOwnerAndName } from './helperFns';
 
@@ -26,7 +25,7 @@ export const getRepoInformation = async (
   id: string,
   setRateLimit: (remaining: any, total: any) => void,
 ) => {
-  console.log(colors.blue(`[run] Getting info for ${id}...`));
+  console.log(chalk.blue(`[run] Getting info for ${id}...`));
 
   const [owner, name] = getOwnerAndName(id);
 
@@ -56,7 +55,7 @@ export const getRepoInformation = async (
       topics: data.topics || [],
     };
 
-    console.log(colors.green(`[run] Successfully got info`));
+    console.log(chalk.green(`[run] Successfully got info`));
     return info;
   } catch (error) {
     return handleGithubError(error);
