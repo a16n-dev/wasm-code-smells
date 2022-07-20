@@ -2,6 +2,9 @@ import { Command } from 'commander';
 import { exit } from 'process';
 import { initDb } from './db';
 import { createQueries } from './lib/createQueries';
+import { processDataset } from './lib/process/processDataset';
+import { getCommonKeywordsFromReadmes } from './lib/processText/getCommonKeywords';
+import { writeReadmes } from './lib/processText/writeReadmes';
 import { runQuery } from './lib/runQuery';
 import { Opts } from './util/cli';
 
@@ -21,15 +24,15 @@ const main = async (program: Command) => {
     }
   }
 
+  await processDataset();
+
   // await writeReadmes();
 
   // await processKeywordsInReadmes();
   // await processKeywordsInDescriptions();
   // await getDatasetSize();
 
-  // await getCommonKeywordsFromReadmes();
-
-  // await processDataset();
+  await getCommonKeywordsFromReadmes();
 
   exit();
 };

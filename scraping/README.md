@@ -1,1 +1,5 @@
-Node.js template repository with minimal boilerplate, designed for quick prototyping
+# Scraper for WebAssembly Projects on Github
+
+## Running the project
+
+TODO

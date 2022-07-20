@@ -1,10 +1,21 @@
 import { writeFileSync } from 'fs';
+import { Repository } from '../../db/repository';
 import { RepositoryText } from '../../db/RepositoryText';
 
 export const getCommonKeywordsFromReadmes = async () => {
   const keywordMap: { [key: string]: number } = {};
 
-  const readmes = await RepositoryText.find();
+  const baselineProjects = await Repository.find({
+    queries: {
+      $elemMatch: { $regex: 'in' },
+    },
+  });
+
+  const baselineIds = baselineProjects.map((p) => p.id);
+
+  const readmes = await RepositoryText.find({
+    _id: { $in: baselineIds },
+  });
 
   readmes.forEach(({ keywords_spacy, keywords_topicrank, keywords_yake }) => {
     // get set of keywords for this readme
@@ -30,8 +41,11 @@ export const getCommonKeywordsFromReadmes = async () => {
 
   console.log(sortedMap);
 
+  // get top 100
+  const top100 = sortedMap.slice(0, 100);
+
   const file = writeFileSync(
-    './keywords.json',
-    JSON.stringify(sortedMap, undefined, 2),
+    './keywords.csv',
+    top100.map(([keyword, count]) => `${keyword}, ${count}`).join('\n'),
   );
 };

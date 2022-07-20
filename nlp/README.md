@@ -7,4 +7,5 @@ Using NLP techniques to process READMEs and descriptions for repositories, to be
 This project uses `pipenv` for managing dependencies.
 
 ```bash
-
+pipenv run py main.py
+```

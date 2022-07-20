@@ -17,7 +17,6 @@ def readme_extract_with_topicrank():
     for readme in readmes:
          # Skip if 'keywords_yake' already exists
         if 'keywords_topicrank' in readme:
-            print("Skipping " + readme['_id'])
             continue
 
         print("Processing " + readme['_id'])
@@ -52,7 +51,6 @@ def description_extract_with_topicrank():
     for description in descriptions:
          # Skip if 'keywords_yake' already exists
         if 'keywords_topicrank' in description:
-            print("Skipping " + description['_id'])
             continue
 
         print("Processing " + description['_id'])

@@ -8,6 +8,7 @@ import { readmeToPlaintext } from './readmeToPlaintext';
 export const writeReadmes = async () => {
   const repositories = await Repository.find({
     exclude: { $in: [false, undefined] },
+    processed: true,
   });
 
   var zip = new JSZip();

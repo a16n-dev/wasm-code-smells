@@ -12,9 +12,10 @@ def readme_extract_with_yake():
     kw_extractor = yake.KeywordExtractor()
 
     for readme in readmes:
-         # Skip if 'keywords_yake' already exists
-        if 'keywords_yake' in readme:
-            print("Skipping " + readme['_id'])
+
+
+         # Skip if 'keywords_yake' is not there or is not empty
+        if 'keywords_yake' in readme and readme['keywords_yake']:
             continue
 
         print("Processing " + readme['_id'])
@@ -37,7 +38,6 @@ def description_extract_with_yake():
     for description in descriptions:
          # Skip if 'keywords_yake' already exists
         if 'keywords_yake' in description:
-            print("Skipping " + description['_id'])
             continue
 
         print("Processing " + description['_id'])

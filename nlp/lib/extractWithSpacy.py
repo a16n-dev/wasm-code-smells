@@ -15,7 +15,6 @@ def readme_extract_with_spacy():
 
         # Skip if 'keywords_spacy' already exists
         if 'keywords_spacy' in readme:
-            print("Skipping " + readme['_id'])
             continue
 
         print("Processing " + readme['_id'])
@@ -42,7 +41,6 @@ def description_extract_with_spacy():
 
         # Skip if 'keywords_spacy' already exists
         if 'keywords_spacy' in description:
-            print("Skipping " + description['_id'])
             continue
 
         print("Processing " + description['_id'])
