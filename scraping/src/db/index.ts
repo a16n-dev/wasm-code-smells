@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
-
-const DB_NAME = 'wasm-github';
+import { config } from '../config';
 
 export const initDb = async () => {
-  await mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`);
+  await mongoose.connect(config.dbConnectionString);
   console.log('connected to db');
 };

@@ -32,6 +32,9 @@ const RepositorySchema = new Schema({
   exclude: { type: Boolean, default: false },
   description: { type: String },
   readme: { type: String },
+  isWasmProject: { type: Boolean },
+  processedAnalysis1: { type: Boolean },
+  keyFiles: { type: [String], default: [] },
 });
 
 export const Repository = model('Repository', RepositorySchema);

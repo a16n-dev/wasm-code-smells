@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import format from 'format-duration';
 import { performance } from 'perf_hooks';
-import { Repository } from '../../db/repository';
+import { Repository } from '../../db/model/Repository';
 import { waitUntilTime } from '../../util/waitUntilTime';
 import { processRepository } from './processRepository';
 

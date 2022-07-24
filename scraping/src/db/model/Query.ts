@@ -10,7 +10,6 @@ const QuerySchema = new Schema({
   finished: { type: Boolean, default: false },
   results: { type: Number, required: true, default: 0 },
   type: { type: String, required: true, enum: ['repository', 'code'] },
-  isValidProject: { type: Boolean },
 });
 
 QuerySchema.virtual('repositories', {

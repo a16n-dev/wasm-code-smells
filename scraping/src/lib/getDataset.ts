@@ -1,4 +1,4 @@
-import { Repository } from '../db/repository';
+import { Repository } from '../db/model/Repository';
 
 export const getDataset = async () => {
   const repos = await Repository.find({

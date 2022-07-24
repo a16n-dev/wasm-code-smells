@@ -6,6 +6,10 @@ export const repoKeywords = [
   'emscripten',
 ];
 
+// ====== LANGUAGES ======
+// All languages definined here should be valid for use in the github api:
+// https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+
 // Source language targets
 export const sourceCodeLanguages = ['c', 'cpp'];
 
@@ -20,6 +24,7 @@ export const buildScriptLanguages = [
   'powerShell',
 ];
 
+// ====== KEYWORDS ======
 // keywords that indicate a build script is building a wasm project
 export const buildScriptKeywords = [
   // emscripten

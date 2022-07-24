@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Octokit } from 'octokit';
-import { Query } from '../db/Query';
-import { Repository } from '../db/repository';
+import { Query } from '../db/model/Query';
+import { Repository } from '../db/model/Repository';
 import { wait } from '../util/wait';
 import { octokit } from './octokit';
 

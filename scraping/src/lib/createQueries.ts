@@ -1,4 +1,4 @@
-import { Query } from '../db/Query';
+import { Query } from '../db/model/Query';
 import { wait } from '../util/wait';
 import { octokit } from './octokit';
 import { codeQueries, repositoryQueries } from './queries';

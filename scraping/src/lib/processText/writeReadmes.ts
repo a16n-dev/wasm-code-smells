@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import JSZip from 'jszip';
-import { Repository } from '../../db/repository';
-import { RepositoryDescription } from '../../db/RepositoryDescription';
-import { RepositoryText } from '../../db/RepositoryText';
+import { Repository } from '../../db/model/Repository';
+import { RepositoryDescription } from '../../db/model/RepositoryDescription';
+import { RepositoryText } from '../../db/model/RepositoryText';
 import { readmeToPlaintext } from './readmeToPlaintext';
 
 export const writeReadmes = async () => {

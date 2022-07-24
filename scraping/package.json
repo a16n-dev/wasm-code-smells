@@ -8,6 +8,7 @@
     "start": "cross-env NODE_ENV=development ts-node src/index.ts"
   },
   "devDependencies": {
+    "@types/inquirer": "^8.0.0",
     "@types/node": "^17.0.32",
     "cross-env": "^7.0.3",
     "eslint": "^8.15.0",
@@ -31,6 +32,7 @@
     "envalid": "^7.3.1",
     "format-duration": "^2.0.0",
     "html-to-text": "^8.2.0",
+    "inquirer": "^8.0.0",
     "jszip": "^3.10.0",
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",

@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
-import { Repository } from '../../db/repository';
-import { RepositoryText } from '../../db/RepositoryText';
+import { Repository } from '../../db/model/Repository';
+import { RepositoryText } from '../../db/model/RepositoryText';
 
 export const getCommonKeywordsFromReadmes = async () => {
   const keywordMap: { [key: string]: number } = {};

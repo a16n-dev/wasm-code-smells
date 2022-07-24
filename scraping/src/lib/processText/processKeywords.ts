@@ -1,5 +1,5 @@
-import { RepositoryText } from '../../db/RepositoryText';
-import { RepositoryDescription } from '../../db/RepositoryDescription';
+import { RepositoryText } from '../../db/model/RepositoryText';
+import { RepositoryDescription } from '../../db/model/RepositoryDescription';
 import chalk from 'chalk';
 const keys = ['wasm', 'web assembly', 'webassembly', 'emscripten'];
 
