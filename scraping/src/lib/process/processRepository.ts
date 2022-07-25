@@ -10,11 +10,12 @@ import { getUnprocessedRepo } from './helperFns';
  * If the repository is not found, it will be marked as excluded
  */
 export const processRepository = async (
+  collection: string,
   setRateLimit: (remaining: any, total: any) => void,
 ) => {
   // Find an unprocessed repo
 
-  const repo = await getUnprocessedRepo();
+  const repo = await getUnprocessedRepo(collection);
 
   if (repo) {
     console.log(

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { handleGithubError } from '../../util/handleGithubError';
-import { octokit } from '../octokit';
+import { octokit } from '../../util/octokit';
 import { getOwnerAndName } from './helperFns';
 
 export const getRepoReadme = async (

@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { getUnprocessedRepo } from './helperFns';
 
-export const checkIfWasmProject = async (
+export const checkIfWasmProject1 = async (
   setRateLimit: (remaining: any, total: any) => void,
 ) => {
   const repo = await getUnprocessedRepo();
@@ -11,7 +11,9 @@ export const checkIfWasmProject = async (
       chalk.magenta(`\n[start] ===== Processing ${repo._id} =====\n`),
     );
 
-    repo.processed = true;
+    // Get occurences of emscripten header
+
+    repo.processedAnalysis1 = true;
 
     await repo.save();
     console.log(chalk.green(`[end] Successfully processed ${repo._id}`));

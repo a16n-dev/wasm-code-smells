@@ -39,8 +39,6 @@ export const buildScriptKeywords = [
 export const sourceCodeSnippets = [
   '#include <emscripten.h>',
   '#include <html5.h>',
-  '#include "emscripten.h"',
-  '#include "html5.h"',
   'EM_ASM(',
   'EM_JS(',
 ];

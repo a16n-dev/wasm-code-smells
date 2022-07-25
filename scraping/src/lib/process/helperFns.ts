@@ -1,7 +1,7 @@
 import { Repository } from '../../db/model/Repository';
 
-export const getUnprocessedRepo = async () => {
-  return await Repository.findOne({
+export const getUnprocessedRepo = async (collection: string) => {
+  return await Repository(collection).findOne({
     processed: { $in: [false, undefined] },
   });
 };

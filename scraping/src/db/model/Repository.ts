@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
 
+// Represents a repository, as a result of a query to the github search API
 const RepositorySchema = new Schema({
   _id: { type: String },
   githubId: Number,
@@ -35,9 +36,8 @@ const RepositorySchema = new Schema({
   isWasmProject: { type: Boolean },
   processedAnalysis1: { type: Boolean },
   keyFiles: { type: [String], default: [] },
+  wasmTags: { type: [String], default: [] },
 });
 
-export const Repository = model('Repository', RepositorySchema);
-
-export const createRepositoryDataset = (queryName: string) =>
-  model('Repository', RepositorySchema, queryName);
+export const Repository = (collection: string) =>
+  model('Repository', RepositorySchema, `repository-${collection}`);

@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
 
+// Represents a query to be made to the github search API
 const QuerySchema = new Schema({
   key: { type: String, required: true, index: { unique: true } },
   description: { type: String, required: true },
@@ -18,4 +19,5 @@ QuerySchema.virtual('repositories', {
   foreignField: 'queryKey',
 });
 
-export const Query = model('Query', QuerySchema);
+export const Query = (collection: string) =>
+  model('Query', QuerySchema, `query-${collection}`);

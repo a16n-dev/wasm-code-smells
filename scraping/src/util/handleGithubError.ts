@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import { format } from 'date-fns';
+import { wait } from './wait';
 
 export const handleGithubError = (error: any) => {
   const msg = error.message;
