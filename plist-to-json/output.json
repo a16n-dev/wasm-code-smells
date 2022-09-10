@@ -1,0 +1,90 @@
+[
+  {
+    "category": "Unused code",
+    "type": "Dead nested assignment",
+    "check": "deadcode.DeadStores",
+    "line": 3952,
+    "col": 12,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead initialization",
+    "check": "deadcode.DeadStores",
+    "line": 4827,
+    "col": 29,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead nested assignment",
+    "check": "deadcode.DeadStores",
+    "line": 5016,
+    "col": 31,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead initialization",
+    "check": "deadcode.DeadStores",
+    "line": 5465,
+    "col": 8,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead initialization",
+    "check": "deadcode.DeadStores",
+    "line": 5466,
+    "col": 8,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead assignment",
+    "check": "deadcode.DeadStores",
+    "line": 5643,
+    "col": 4,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead nested assignment",
+    "check": "deadcode.DeadStores",
+    "line": 5643,
+    "col": 24,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead nested assignment",
+    "check": "deadcode.DeadStores",
+    "line": 5643,
+    "col": 42,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead nested assignment",
+    "check": "deadcode.DeadStores",
+    "line": 5644,
+    "col": 10,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Unused code",
+    "type": "Dead nested assignment",
+    "check": "deadcode.DeadStores",
+    "line": 5644,
+    "col": 25,
+    "file": "./stb_image.h"
+  },
+  {
+    "category": "Wasm",
+    "type": "Return value of fputs() is compared to 0",
+    "check": "wasm.BadFputsComparisonChecker",
+    "line": 56,
+    "col": 16,
+    "file": "renderer.cpp"
+  }
+]
