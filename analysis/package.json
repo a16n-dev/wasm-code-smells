@@ -1,0 +1,28 @@
+{
+  "name": "wasm-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "analyse.js",
+  "scripts": {
+    "clone": "ts-node src/scripts/clone.ts",
+    "detect-wasm": "ts-node src/scripts/detectWasm.ts",
+    "extract": "ts-node src/scripts/extract.ts",
+    "analyse": "ts-node src/scripts/analyse.ts",
+    "summary": "ts-node getAnalysisStats.ts",
+    "reset": "ts-node reset.ts",
+    "wasm-files": "ts-node getWasmFiles.ts",
+    "count-wasm": "ts-node src/scripts/countWasmProjects.ts",
+    "final-output": "ts-node getFinalOutput.ts",
+    "stats": "ts-node getStats.ts",
+    "cleanup-repos": "ts-node src/scripts/cleanupRepos.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.7.21",
+    "@types/plist": "^3.0.2",
+    "plist": "^3.0.6",
+    "ts-node": "^10.9.1"
+  }
+}
