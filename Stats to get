@@ -1,0 +1,30 @@
+Github Search API Results
+* Total number of repos found through search
+* number of repos found by code search
+* number of repos found by repo search        
+
+NLP Stuff
+* Original number of repositories
+* Filtered repositories by wasm
+* Filter repository by webassembly
+* Filter repository by web assembly
+* Filter repository by emscripten
+* Total number of repos after nlp
+
+NLP comparison with top C/C++ projects
+* 
+
+Number of original code smells
+
+Number of implemented code smell checkers
+
+
+for results
+* total number of projects
+* total number of files
+* number of projects with code smells
+* number of projects with code smells that were detected as compiling to wasm,
+* number of code smells in projects not compiling to wasm
+* total number of code smells found
+
+* breakdown of codesmells by type (probably also need to discuss how severe each smell is)
